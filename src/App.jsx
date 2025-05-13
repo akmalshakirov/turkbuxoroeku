@@ -1,13 +1,22 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/layout/Header";
+import Layout from "./components/Layout";
+import About from "./pages/about/about";
+import Contacts from "./pages/Contacts/Contacts";
+import News from "./pages/News/News";
+import Services from "./pages/Services/Services";
 
 function App() {
     return (
         <>
-            <Header />
-            <h1 className='text-5xl font-bold hover:underline hover:text-blue-400 transition-colors'>
-                Home page
-            </h1>
+            <Routes>
+                <Route path='/' element={<Layout />}>
+                    <Route path='/about' element={<About />} />
+                    <Route path='/services' element={<Services />} />
+                    <Route path='/news' element={<News />} />
+                    <Route path='/contacts' element={<Contacts />} />
+                </Route>
+            </Routes>
         </>
     );
 }

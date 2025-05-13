@@ -20,6 +20,9 @@ a {
     font-weight: inherit;
     text-decoration: inherit;
 }
+a:hover {
+    text-decoration: underline;
+}
 
 button {
     font-family: inherit;
