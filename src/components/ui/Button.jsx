@@ -1,8 +1,28 @@
 import React from "react";
 
-const Button = ({ children }) => {
+const Button = ({
+    children,
+    variant = "primary",
+    size = "md",
+    className = "",
+    ...props
+}) => {
+    const baseStyle = "font-medium rounded-[10px] outline-none";
+
+    const variantStyles = {
+        primary: "bg-[#E5006A] hover:bg-[#e5006bb6] transition-colors",
+    };
+
+    const sizeStyles = {
+        sm: "py-1 px-3 text-sm",
+        md: "py-[7px] px-[7px] text-base",
+        lg: "py-3 px-6 text-lg",
+    };
+
+    const classes = `${baseStyle} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+
     return (
-        <button className='p-[7px] bg-[#E5006A] rounded-[10px] hover:bg-[#e5006bb6] transition-colors'>
+        <button className={classes} {...props}>
             {children}
         </button>
     );

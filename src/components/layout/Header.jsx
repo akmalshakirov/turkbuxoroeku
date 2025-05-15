@@ -7,10 +7,12 @@ import Dropdown from "../../images/dropdown.png";
 import Flag_RU from "../../images/flag-ru.png";
 import Flag_UZ from "../../images/flag-uz.png";
 import Flag_EN from "../../images/flag-en.png";
+import Modal from "../ui/Modal";
 
 const Header = () => {
     const [langActive, setLangActive] = useState(false);
     const [headerActive, setHeaderActive] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
         <>
@@ -35,7 +37,46 @@ const Header = () => {
                         </div>
                     </a>
                     <div className='flex items-center gap-3.5'>
-                        <Button className='font-bold'>Записаться</Button>
+                        <Button
+                            className='font-bold'
+                            onClick={() => setIsModalOpen(true)}>
+                            Записаться
+                        </Button>
+                        <Modal
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            title='Salom, bu modal oyna!'>
+                            <div className='space-y-4'>
+                                <p>
+                                    Bu modal komponentining tarkibi. Bu yerga
+                                    istalgan JSX kontentini qo'shishingiz
+                                    mumkin.
+                                </p>
+
+                                <div className='bg-gray-100 p-4 rounded'>
+                                    <p className='text-gray-800'>
+                                        Matn, rasmlar, formalar yoki boshqa
+                                        komponentlar qo'shishingiz mumkin.
+                                    </p>
+                                </div>
+
+                                <div className='flex justify-end space-x-2'>
+                                    <button
+                                        onClick={() => setIsModalOpen(false)}
+                                        className='px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition-colors'>
+                                        Bekor qilish
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            alert("Tasdiqlandi!");
+                                            setIsModalOpen(true);
+                                        }}
+                                        className='px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors'>
+                                        Tasdiqlash
+                                    </button>
+                                </div>
+                            </div>
+                        </Modal>
                         <button
                             className={`dropdown ${
                                 langActive ? "dropdown-active" : ""
